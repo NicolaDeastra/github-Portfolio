@@ -1,4 +1,16 @@
 import React, { Component } from "react";
+import styled from "styled-components";
+import Link from "../components/Link/Link";
+import List from "../components/List/List";
+
+const ProfileWrapper = styled.div`
+  width: 50%;
+  margin: 10px auto;
+`;
+
+const Avatar = styled.img`
+  width: 150px;
+`;
 
 class Profile extends Component {
   constructor() {
@@ -28,18 +40,42 @@ class Profile extends Component {
       return <div>Loading...</div>;
     }
 
+    const items = [
+      {
+        label: "html_url",
+        value: <Link url={data.html_url} title="Github URL" />,
+      },
+      {
+        label: "respos_url",
+        value: data.repos_url,
+      },
+      {
+        label: "name",
+        value: data.name,
+      },
+      {
+        label: "company",
+        value: data.company,
+      },
+      {
+        label: "location",
+        value: data.location,
+      },
+      {
+        label: "email",
+        value: data.email,
+      },
+      {
+        label: "bio",
+        value: data.bio,
+      },
+    ];
+
     return (
-      <div>
-        <ul>
-          <li>avatar_url: {data.avatar_url}</li>
-          <li>html_url: {data.html_url}</li>
-          <li>repos_url: {data.repos_url}</li>
-          <li>name: {data.name}</li>
-          <li>company: {data.company}</li>
-          <li>email: {data.email}</li>
-          <li>bio: {data.bio}</li>
-        </ul>
-      </div>
+      <ProfileWrapper>
+        <Avatar src={data.avatar_url} alt="avatar" className="Profile-avatar" />
+        <List items={items} />
+      </ProfileWrapper>
     );
   }
 }

@@ -1,16 +1,28 @@
 import React from "react";
-import Link from "../Link/Link";
+import styled from "styled-components";
+import logo from "../../GitHub-Mark-64px.png";
 
-import "./Header.css";
+const HeaderWrapper = styled.div`
+  background-color: #282c34;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+`;
 
-const Header = ({ logo }) => (
-  <header className="App-header">
-    <img src={logo} className="App-logo" alt="logo" />
-    <p>
-      Edit <code>src/App.js</code> and save to reload.
-    </p>
-    <Link url="http://reactjs.org" title="learn react" />
-  </header>
+const Logo = styled.img`
+  height: 64px;
+  pointer-events: none;
+`;
+
+const Header = () => (
+  <HeaderWrapper>
+    <Logo src={logo} className="App-logo" alt="logo" />
+    <h1>My GitHub Portfolio</h1>
+  </HeaderWrapper>
 );
 
 export default Header;
